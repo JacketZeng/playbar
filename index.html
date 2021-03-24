@@ -1,0 +1,58 @@
+<html>
+<style>
+    body {
+        background-color: rgb(94, 143, 94);
+    }
+</style>
+
+<body>
+    <button onclick="playFile({id:863})">bensound-sunny</button> |
+    <button onclick="playFile({id:862})">wav</button> |
+    <button onclick="play()">播放</button> |
+    <button onclick="pause()">暂停</button>
+    <div id="playbar"></div>
+    <script type="text/javascript" src="dist/playbar.js"></script>
+</body>
+
+<script>
+
+    var playbar1;
+
+    // 暂停
+    pause = function () {
+        playbar1.pause();
+    }
+
+    // 播放
+    play = function () {
+        playbar1.play();
+    }
+
+    // 选择音频
+    playFile = function (item) {
+        if (item.id === 863) {
+            id = 'bensound-sunny.mp3';
+        } else {
+            id = '1.wav';
+        }
+        id = 'bensound-sunny.mp3';
+
+        // if(!playbar1){
+            initPlaybar({name:'bensoound-sunny.mp3',id:id},[{name:'1.wav',id:'1.wav'}]);
+        // }else{
+        //     playbar1.loadAudio('http://localhost:8888/assets/music/'+ id);
+        // }
+
+    }
+
+    function initPlaybar(file, list) {
+        playbar1 = new playbar.Core({
+            el: 'playbar',
+            file: file,
+            list: list,
+            url : 'http://localhost:8888/assets/music/'+ file.id
+        });
+    }
+</script>
+
+</html>
